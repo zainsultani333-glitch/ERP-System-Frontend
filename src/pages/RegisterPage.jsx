@@ -153,7 +153,7 @@ const RegisterPage = () => {
                     onChange={(e) => setRole(e.target.value)}
                     className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 outline-none appearance-none bg-white cursor-pointer"
                   >
-                    <option value="hr">👥 HR</option>
+                    <option value="Human Resources">👥 HR</option>
                     <option value="admin">⚡ Admin</option>
                     <option value="accounts">💰 Accounts</option>
                   </select>

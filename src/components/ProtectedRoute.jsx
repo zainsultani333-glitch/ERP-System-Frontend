@@ -1,13 +1,9 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ isLoggedIn, userRole, allowedRoles, children }) => {
-  const role = userRole?.toLowerCase().trim();
+const ProtectedRoute = ({ children, isLoggedIn, userRole, allowedRoles }) => {
+  if (!isLoggedIn) return <Navigate to="/login" />;
 
-    if (!isLoggedIn) {
-    return <Navigate to="/login" />;
-  }
-
-  if (allowedRoles && !allowedRoles.includes(role)) {
+  if (!allowedRoles.includes(userRole)) {
     return <Navigate to="/" />;
   }
 
