@@ -3,10 +3,10 @@ import axios from "axios";
 
 // Base URL for your backend
 const API = axios.create({
-  baseURL: "http://localhost:5001/api", // your Express backend
+  baseURL: "https://erp-system-backend-iota.vercel.app/api", // your Express backend
 });
 
-// https://erp-system-backend-iota.vercel.app/api
+// http://localhost:5001/api
 
 // 🔥 Add this interceptor
 API.interceptors.request.use((req) => {
