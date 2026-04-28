@@ -3,7 +3,7 @@ import {
   getNotifications,
   updateNotification,
   deleteNotification,
-} from "../Service/api";
+} from "../Service/Api";
 import { FiBell, FiCheckCircle, FiTrash2, FiMail, FiClock, FiAlertCircle } from "react-icons/fi";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
