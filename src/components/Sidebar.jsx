@@ -7,7 +7,6 @@ const Sidebar = ({ userRole = "admin" }) => {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Define sections for different roles
   const getNavSections = () => {
     switch (role) {
       case "admin":
@@ -81,49 +80,54 @@ const Sidebar = ({ userRole = "admin" }) => {
     <div className="flex">
       {/* Sidebar */}
       <div
-        className={`${isCollapsed ? 'w-20' : 'w-80'} bg-secondary text-gray-800 shadow-2xl flex flex-col fixed top-0 left-0 h-screen overflow-y-auto transition-all duration-300 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']`}
+        className={`${isCollapsed ? 'w-20' : 'w-72'} bg-white shadow-xl flex flex-col fixed top-0 left-0 h-screen overflow-y-auto scrollbar-width: none; -ms-overflow-style: none; transition-all duration-300 ease-in-out [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-primary/30 [&::-webkit-scrollbar-thumb:hover]:bg-primary/50`}
       >
-        <div className="p-5 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-secondary z-10">
-          <h1 className={`text-2xl font-bold text-primary ${isCollapsed ? 'hidden' : 'block'}`}>
-            TMS
-          </h1>
+        {/* Logo Area */}
+        <div className="px-5 py-4 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
+          <div className={`${isCollapsed ? 'hidden' : 'block'}`}>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              TMS
+            </h1>
+            <p className="text-xs text-gray-400 mt-0.5">Task Management System</p>
+          </div>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="text-gray-500 hover:text-primary transition-colors"
+            className="text-gray-400 hover:text-primary transition-all duration-200 p-1.5 rounded-lg hover:bg-secondary"
           >
             {isCollapsed ? (
-              <ChevronRightIcon className="w-6 h-6" />
+              <ChevronRightIcon className="w-5 h-5" />
             ) : (
-              <ChevronLeftIcon className="w-6 h-6" />
+              <ChevronLeftIcon className="w-5 h-5" />
             )}
           </button>
         </div>
 
-        <nav className="flex-1 mt-4 mb-4">
+        {/* Navigation */}
+        <nav className="flex-1 mt-6 mb-4 px-3">
           {navSections.map((section, idx) => (
-            <div key={idx} className="mb-6">
+            <div key={idx} className="mb-7">
               {!isCollapsed && (
-                <div className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                <div className="px-3 mb-3 text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
                   {section.title}
                 </div>
               )}
-              <ul className="space-y-2 px-3">
+              <ul className="space-y-1">
                 {section.items.map((item) => (
                   <li key={item.path} className="relative">
                     <Link
                       to={item.path}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group
                     ${location.pathname === item.path
-                          ? 'bg-primary/20 text-primary shadow-lg font-semibold'
-                          : 'text-gray-700 hover:bg-primary/10 hover:text-primary'
+                          ? 'bg-primary text-white shadow-md'
+                          : 'text-gray-600 hover:bg-secondary hover:text-primary'
                         }`}
                     >
-                      <span className="text-xl">{item.icon}</span>
-                      <span className={`${isCollapsed ? 'hidden' : 'block'} font-medium`}>
+                      <span className="text-lg">{item.icon}</span>
+                      <span className={`${isCollapsed ? 'hidden' : 'block'} text-sm font-medium`}>
                         {item.name}
                       </span>
                       {isCollapsed && (
-                        <div className="absolute left-20 hidden group-hover:block bg-primary text-white px-2 py-1 rounded text-sm whitespace-nowrap z-50 shadow-lg">
+                        <div className="absolute left-full ml-2 hidden group-hover:block bg-gray-800 text-white px-2.5 py-1 rounded-md text-xs whitespace-nowrap z-50 shadow-lg">
                           {item.name}
                         </div>
                       )}
@@ -135,18 +139,25 @@ const Sidebar = ({ userRole = "admin" }) => {
           ))}
         </nav>
 
-        <div className="p-4 border-t border-gray-200 text-xs text-gray-400 text-center sticky bottom-0 bg-secondary">
-          {!isCollapsed && (
+        {/* Footer */}
+        <div className="px-4 py-3 border-t border-gray-100 text-xs text-gray-400 text-center sticky bottom-0 bg-white">
+          {!isCollapsed ? (
             <div>
-              <span>© 2024 TMS v1.0</span>
-              <div className="mt-1 capitalize">Logged in as: {userRole}</div>
+              <p>© 2024 TMS v1.0</p>
+              <p className="mt-1 capitalize text-primary font-medium text-[11px]">
+                Logged in as: {userRole}
+              </p>
+            </div>
+          ) : (
+            <div className="w-8 h-8 mx-auto rounded-full bg-secondary flex items-center justify-center">
+              <span className="text-primary text-xs font-bold">T</span>
             </div>
           )}
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className={`${isCollapsed ? 'ml-20' : 'ml-80'} flex-1`}>
+      {/* Main Content Spacer */}
+      <div className={`${isCollapsed ? 'ml-20' : 'ml-72'} flex-1 transition-all duration-300 ease-in-out`}>
         {/* Your page content goes here */}
       </div>
     </div>
