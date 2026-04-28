@@ -16,7 +16,7 @@ const Sidebar = ({ userRole = "admin" }) => {
             items: [
               { path: "/admin-dashboard", name: "Admin Dashboard", icon: "📊" },
               { path: "/company", name: "Company", icon: "🏢" },
-              { path: "/roles", name: "Role", icon: "🔐" },
+              // { path: "/roles", name: "Role", icon: "🔐" },
               { path: "/users", name: "Users", icon: "👥" },
               { path: "/notifications", name: "Notifications", icon: "🔔" }
             ]

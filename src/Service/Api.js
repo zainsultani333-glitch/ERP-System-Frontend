@@ -23,6 +23,12 @@ API.interceptors.request.use((req) => {
 export const login = (data) => API.post("/auth/login", data);
 export const register = (data) => API.post("/auth/register", data);
 
+// Role APIs
+export const getRoles = () => API.get("/roles");
+export const createRole = (data) => API.post("/roles", data);
+export const updateRole = (id, data) => API.put(`/roles/${id}`, data);
+export const deleteRole = (id) => API.delete(`/roles/${id}`);
+
 // Employee APIs
 export const getEmployees = () => API.get("/employees");
 export const getEmployee = (id) => API.get(`/employees/${id}`);
@@ -83,6 +89,15 @@ export const getNotifications = () => API.get("/notifications");
 export const createNotification = (data) => API.post("/notifications", data);
 export const updateNotification = (id, data) => API.put(`/notifications/${id}`, data);
 export const deleteNotification = (id) => API.delete(`/notifications/${id}`);
+
+// ================= ACCOUNTS DASHBOARD API =================
+export const getAccountsDashboard = () => API.get("/accountdashboard");
+
+// ================= HR DASHBOARD API =================
+export const getHRDashboard = () => API.get("/hr-dashboard");
+
+// ================= ADMIN DASHBOARD API =================
+export const getAdminDashboard = () => API.get("/admin-dashboard");
 
 // Export the API instance if you need it
 export default API;
