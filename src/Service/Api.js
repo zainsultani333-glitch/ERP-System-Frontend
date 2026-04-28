@@ -84,11 +84,6 @@ export const createDocument = (data) => API.post("/documents", data);
 export const updateDocument = (id, data) => API.put(`/documents/${id}`, data);
 export const deleteDocument = (id) => API.delete(`/documents/${id}`);
 
-// Notification APIs
-export const getNotifications = () => API.get("/notifications");
-export const createNotification = (data) => API.post("/notifications", data);
-export const updateNotification = (id, data) => API.put(`/notifications/${id}`, data);
-export const deleteNotification = (id) => API.delete(`/notifications/${id}`);
 
 // ================= ACCOUNTS DASHBOARD API =================
 export const getAccountsDashboard = () => API.get("/accountdashboard");
@@ -98,6 +93,21 @@ export const getHRDashboard = () => API.get("/hr-dashboard");
 
 // ================= ADMIN DASHBOARD API =================
 export const getAdminDashboard = () => API.get("/admin-dashboard");
+
+
+// ================= NOTIFICATION APIs =================
+export const getNotifications = () => API.get("/notifications");
+
+export const createNotification = (data) =>
+  API.post("/notifications", data);
+
+// ✔ mark as read (important for UI)
+export const updateNotification = (id, data) =>
+  API.put(`/notifications/${id}`, data);
+
+// ✔ delete notification
+export const deleteNotification = (id) =>
+  API.delete(`/notifications/${id}`);
 
 // Export the API instance if you need it
 export default API;
